@@ -1,0 +1,38 @@
+%% This is a sequence diagram that outlines the branch structure of my git repos
+%% The diagram is written in mermaid which has an online editor here: 
+%% https://mermaid-js.github.io/mermaid-live-editor/
+sequenceDiagram
+    participant M as master 
+    participant S as staging
+    participant Q as qa 
+    participant D as develop 
+    participant F1 as FEATURE1
+
+D ->> F1 : New Branch
+note over F1 : Small, often commits
+note over D : Other commits may occur
+D -->> F1 : Rebase feature branch on develop
+note over F1 : Developer Testing
+note over F1 : QA Feature Testing 
+F1 ->> D : Merge into develop (add merge commit)
+note over D : More features added
+D ->> Q : Merge develop into qa (add merge commit)
+Q -->> D : Rebase develop on qa
+note over Q : QA Integration Testing 
+note over Q : QA Regression Testing 
+note over Q : Enough features for release
+Q ->> S : Merge qa into staging (add merge commit)
+S -->> Q : Rebase qa on staging
+note over S : QA new feature testing
+note over S : QA integration testing
+note over S : QA regression testing
+S ->> M : Merge into master (add merge commit)
+note over M : Tag master with release version
+M -->> S : Rebase staging on master
+
+
+
+
+
+
+            

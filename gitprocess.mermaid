@@ -1,6 +1,14 @@
 %% This is a sequence diagram that outlines the branch structure of my git repos
 %% The diagram is written in mermaid which has an online editor here: 
 %% https://mermaid-js.github.io/mermaid-live-editor/
+
+%% Branches and descriptions:
+%% feature - feature branches are desired to be small and testable and correspond to an individual jira ticket. Branch names should contain ticket number.
+%% develop - develop branch should be compilable and integratable.
+%% qa - branch for qa to do complete testing
+%% staging - branch for release candidates. production grade code only. final testing occurs on this branch and passing final testing becomes production.
+%% master - production code. contains released code only. Each commit is tagged with a published version number.
+
 sequenceDiagram
     participant M as master 
     participant S as staging
